@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  redisapp:
+    image: ${DOCKER_REGISTRY-}redisapp
+    build:
+      context: .
+      dockerfile: RedisApp/Dockerfile
+    depends_on:
+      - db_app
+
+  db_app:
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+    ports:
+      - 5432:5432
+    image: postgres:15.2-alpine3.17
+  
+  redis:
+    ports:
+      - 6379:6379
+    image: redis:alpine

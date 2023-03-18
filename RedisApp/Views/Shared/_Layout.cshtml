@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Html.PartialAsync("HeadPartial")
+    @await Html.PartialAsync("StylesPartial")
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                @await Html.PartialAsync("HeaderPartial")
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        @await Html.PartialAsync("FooterPartial")
+    </footer>
+
+    @await Html.PartialAsync("JSLibsPartial")
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
